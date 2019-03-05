@@ -5,16 +5,14 @@ import java.util.Set;
 
 import org.bson.types.ObjectId;
 
-import chrysler.com.ProyectoMongo.necesario.Modelo;
-
-public class Personaje {
+public class Personaje  implements Comparable{
 	private ObjectId id;
 	private String nombre;
 	private String region_procedencia;
 	private float edad;
 	private Set<Pokemon> pokemones;
 	public Personaje() {
-		pokemones = new HashSet<Pokemon>();
+		pokemones = new HashSet<>();
 	}
 	public ObjectId getId() {
 		return id;
@@ -51,6 +49,11 @@ public class Personaje {
 	@Override
 	public String toString() {
 		return nombre;
+	}
+	@Override
+	public int compareTo(Object o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 }

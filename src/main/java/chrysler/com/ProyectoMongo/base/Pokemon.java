@@ -2,7 +2,7 @@ package chrysler.com.ProyectoMongo.base;
 
 import org.bson.types.ObjectId;
 
-public class Pokemon {	
+public class Pokemon  implements Comparable{	
 	private ObjectId id;
 	private String nombre;
 	private String tipo;
@@ -51,6 +51,11 @@ public class Pokemon {
 	@Override
 	public String toString() {
 		return nombre;
+	}
+	@Override
+	public int compareTo(Object o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 }

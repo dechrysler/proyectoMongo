@@ -104,24 +104,31 @@ public class PanelPersonaje extends JPanel implements ActionListener,ListSelecti
 			break;
 		case "GUARDAR":
 			Personaje personaje = recogerDatos();
-			Pokemon poke = (Pokemon)anadirPanel.getListaPokemones().get(0);
-			if(anadirPanel.mlista.getSize()>=1) {
-				personajeSeleccionado.getPokemones().add(poke);
+			if(editar==true) {
+				recogerDatos(personajeSeleccionado);
+				modelo.modificar(personajeSeleccionado);
 			}
+			else
 			modelo.guardar(personaje);
 			limpiar();
 			refrescarLista();
 			botones.modoEdicion(false);
+			editar=false;
 			break;
 		case "EDITAR":
 			editar=true;
+			botones.modoEdicion(true);
+			break;
 		case "NUEVO":
 			botones.modoEdicion(true);
+			editar=false;
 			break;
 		case "CANCELAR":
 			limpiar();
 			botones.modoEdicion(false);
 			editar=false;
+			System.out.println(modelo.probandoCosasComplejas());
+			break;
 		default:
 			System.out.println("error");
 	}
@@ -131,12 +138,18 @@ public class PanelPersonaje extends JPanel implements ActionListener,ListSelecti
 		tfNombre.setText("");
 		tfRegion_procedencia.setText("");
 		tfEdad.setText("");
+		anadirPanel.refrescar();
 	}
 	public Personaje recogerDatos() {
 		 Personaje personaje = new Personaje();
 		 personaje.setNombre(tfNombre.getText());
 		personaje.setRegion_procedencia(tfRegion_procedencia.getText());
 		personaje.setEdad(Float.parseFloat(tfEdad.getText()));
+		if(anadirPanel.mlista.getSize()>0) {
+			personaje.getPokemones().add(anadirPanel.getListaPokemones().get(0));
+		}
+		else if(personaje.getPokemones().size()==0)
+			personaje.getPokemones().clear();
 		return personaje;
 	}
 	public void refrescarLista(){
@@ -150,11 +163,23 @@ public class PanelPersonaje extends JPanel implements ActionListener,ListSelecti
 		if(list.getSelectedIndex()==-1)
 			return;
 		personajeSeleccionado =(Personaje) list.getSelectedValue();
+		limpiar();
 		rellenarDatos();
 	}
 	public void rellenarDatos() {
 		tfNombre.setText(personajeSeleccionado.getNombre());
 		tfRegion_procedencia.setText(personajeSeleccionado.getRegion_procedencia());
 		tfEdad.setText(""+personajeSeleccionado.getEdad());
+		for(Pokemon pokimon : personajeSeleccionado.getPokemones()) 
+			anadirPanel.mlista.addElement(pokimon);
+		
+	}
+	public void recogerDatos(Personaje personaje) {
+		 personaje.setNombre(tfNombre.getText());
+		personaje.setRegion_procedencia(tfRegion_procedencia.getText());
+		personaje.setEdad(Float.parseFloat(tfEdad.getText()));
+		personajeSeleccionado.getPokemones().clear();
+		for(Pokemon pokimon : anadirPanel.getListaPokemones())
+				personajeSeleccionado.getPokemones().add(pokimon);
 	}
 }

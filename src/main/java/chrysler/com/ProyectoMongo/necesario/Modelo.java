@@ -63,14 +63,18 @@ public class Modelo {
 		MongoCollection<Personaje> coleccionPersonaje = db.getCollection("personaje", Personaje.class);
 		coleccionPersonaje.insertOne(personaje);
 	}
+	public ArrayList<Pokemon> probandoCosasComplejas() {
+		MongoCollection<Pokemon> coleccionPokemon = db.getCollection("pokemon", Pokemon.class);
+		return coleccionPokemon.find(eq("tipo","hielo")).into(new ArrayList<Pokemon>());
+	}
 	
 	public  ArrayList<Personaje> getPersonajes(){
 		MongoCollection<Personaje> ColectionPersonaje = db.getCollection("personaje", Personaje.class);
 		return ColectionPersonaje.find().into(new ArrayList<Personaje>());
 	}
 	public void modificar(Personaje personaje) {
-		MongoCollection <Personaje> ColectionPersonaje = db.getCollection("personaje",Personaje.class);
-		ColectionPersonaje.replaceOne(eq("id",personaje.getId()), personaje);
+		MongoCollection<Personaje> coleccionPersonaje = db.getCollection("personaje", Personaje.class);
+		coleccionPersonaje.replaceOne(eq("_id", personaje.getId()), personaje);
 	}
 	public void eliminar(Personaje personaje) {
 		MongoCollection<Personaje> CollectionPersonaje = db.getCollection("personaje",Personaje.class);

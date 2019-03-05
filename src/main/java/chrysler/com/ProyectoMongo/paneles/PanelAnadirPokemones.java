@@ -82,14 +82,14 @@ public class PanelAnadirPokemones extends JPanel implements ActionListener{
 				 return;
 			 mlista.addElement(tipoSelect);
 			 comboTipo.removeItem(tipoSelect);
-			 comboTipo.setEnabled(false);
+			 
 			 }
 			 else if(event.getSource().equals(eliminar)) {
 				 if(list.getSelectedIndex()==-1)
 					 return ;
 				 comboTipo.addItem((Pokemon)mlista.remove(list.getSelectedIndex()));
-				 mlista.clear();
-				 comboTipo.setEnabled(true);
+				 mlista.remove(list.getSelectedIndex());
+				
 			 }
 		}
 	
