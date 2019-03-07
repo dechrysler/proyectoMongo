@@ -8,7 +8,7 @@ public class Pokemon  implements Comparable{
 	private String tipo;
 	private float danio;
 	private float vida;
-	private Personaje personaje;
+
 	public Pokemon() {
 		
 	}
@@ -41,12 +41,6 @@ public class Pokemon  implements Comparable{
 	}
 	public void setVida(float vida) {
 		this.vida = vida;
-	}
-	public Personaje getPersonaje() {
-		return personaje;
-	}
-	public void setPersonaje(Personaje personaje) {
-		this.personaje = personaje;
 	}
 	@Override
 	public String toString() {

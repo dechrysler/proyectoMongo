@@ -19,6 +19,8 @@ public class Vista extends JFrame {
 	public JMenu mnNewMenu,mnNewMenu_1;
 	public JMenuItem menuItemSalir,mntmPersonaje,mntmPokemon;
 	public JTabbedPane tabbedPane;
+	public JMenu mnConsultas;
+	public JMenuItem mntmComplejasimple;
 	public Vista() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 513, 424);
@@ -46,13 +48,19 @@ public class Vista extends JFrame {
 		mntmPokemon.setHorizontalAlignment(SwingConstants.CENTER);
 		mnNewMenu_1.add(mntmPokemon);
 		mntmPokemon.setActionCommand("panel_pokemon");
+		
+		mnConsultas = new JMenu("Consultas");
+		menuBar.add(mnConsultas);
+		
+		mntmComplejasimple = new JMenuItem("Compleja/Simple");
+		mnConsultas.add(mntmComplejasimple);
 		contenedor = new JPanel();
 		contenedor.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contenedor);
 		contenedor.setLayout(null);
-		
+		mntmComplejasimple.setActionCommand("CONSULTAS");
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(0, 0, 543, 353);
+		tabbedPane.setBounds(0, 0, 497, 353);
 		contenedor.add(tabbedPane);
 		this.setVisible(true);
 		this.setLocationRelativeTo(null);

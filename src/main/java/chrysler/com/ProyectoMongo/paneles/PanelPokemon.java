@@ -98,7 +98,7 @@ public class PanelPokemon extends JPanel implements ActionListener,ListSelection
 	public void actionPerformed(ActionEvent e) {
 		switch(e.getActionCommand()) {
 		case "ELIMINAR":
-			modelo.eliminar(pokemonSeleccionado);
+			modelo.eliminarPokemon(pokemonSeleccionado);
 			limpiar();
 			refrescarLista();
 			
@@ -147,6 +147,7 @@ public class PanelPokemon extends JPanel implements ActionListener,ListSelection
 		mlista.removeAllElements();
 		for(Pokemon pokimon : modelo.getPokemones())
 			mlista.addElement(pokimon);
+		botones.modoEdicion(false);
 	}
 
 	public void rellenarDatos() {
@@ -161,6 +162,5 @@ public class PanelPokemon extends JPanel implements ActionListener,ListSelection
 			return;
 		pokemonSeleccionado = (Pokemon)list.getSelectedValue();
 		rellenarDatos();
-		
 	}
 }

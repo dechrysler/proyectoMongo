@@ -92,6 +92,7 @@ public class PanelPersonaje extends JPanel implements ActionListener,ListSelecti
 	public void inicializar() {
 		anadirPanel.refrescar();
 		refrescarLista();
+		botones.modoEdicion(false);
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -127,7 +128,6 @@ public class PanelPersonaje extends JPanel implements ActionListener,ListSelecti
 			limpiar();
 			botones.modoEdicion(false);
 			editar=false;
-			System.out.println(modelo.probandoCosasComplejas());
 			break;
 		default:
 			System.out.println("error");
@@ -156,6 +156,7 @@ public class PanelPersonaje extends JPanel implements ActionListener,ListSelecti
 		mlista.removeAllElements();
 		for(Personaje personajillo: modelo.getPersonajes())
 			mlista.addElement(personajillo);
+		anadirPanel.comboTipo.refrescar(modelo.pokemonesLibres());
 	}
 
 	@Override

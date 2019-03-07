@@ -69,7 +69,7 @@ public class PanelAnadirPokemones extends JPanel implements ActionListener{
 	public void refrescar() {
 		Modelo modelo= new Modelo();
 		mlista.removeAllElements();
-		comboTipo.refrescar(modelo.getPokemones());
+		comboTipo.refrescar(modelo.pokemonesLibres());
 	}
 	public void limpiar() {
 		mlista.removeAllElements();
